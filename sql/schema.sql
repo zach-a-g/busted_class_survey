@@ -6,5 +6,5 @@ CREATE TABLE rankings (
 CREATE TABLE topics (
     id serial PRIMARY KEY,
     topic_name text NOT NULL,
-    topic_score INTEGER REFERENCES rankings (id)
+    topic_score INTEGER REFERENCES rankings(id)
 );

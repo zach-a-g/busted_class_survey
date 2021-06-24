@@ -1,3 +1,4 @@
+const db = require('./conn');
 
 class ClassSurveyModel {
     constructor(id, topic_name, topic_score) {
@@ -9,18 +10,20 @@ class ClassSurveyModel {
     static async getAllTopicData() {
         try {
             const response = await db.any(
-                `SELECT FROM topics
+                `SELECT topic_name, ranking_title FROM topics
                     JOIN rankings
-                    ON topics.topic_score = rankings(id)
+                    ON topics.topic_score = rankings.id
                 ORDER BY topics.topic_name;
                 `
             )
-
+            console.log(`SQL Response Is: `, response);
+            return response;
         } catch (error) {
             console.error('ERROR: ', error);
             return error;
         }
     }
-}
+};
+
 
 module.exports = ClassSurveyModel;

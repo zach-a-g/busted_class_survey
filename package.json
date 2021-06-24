@@ -1,10 +1,14 @@
 {
-    "name": "class_survey_v_6_21",
+    "name": "class_survey",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "index.js",
     "scripts": {
-        "dev": "nodemo index.js",
+        "db:connect": "psql postgres://mwupcpfs:evaoemw73SxvHY71fRpVD9GFZi7IPa7t@batyr.db.elephantsql.com/mwupcpfs",
+        "db:init": "psql -f ./sql/schema.sql postgres://mwupcpfs:evaoemw73SxvHY71fRpVD9GFZi7IPa7t@batyr.db.elephantsql.com/mwupcpfs",
+        "db:seed": "psql -f ./sql/seed.sql postgres://mwupcpfs:evaoemw73SxvHY71fRpVD9GFZi7IPa7t@batyr.db.elephantsql.com/mwupcpfs",
+        "db:reset": "npm run db:drop; npm run db:init;",
+        "dev": "nodemon app.js",
         "start": "node app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
